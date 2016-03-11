@@ -9,7 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ef83ab3-fa24-4667-8bf6-f7c588108beb" name="Default" comment="">
+    <list default="true" id="9ef83ab3-fa24-4667-8bf6-f7c588108beb" name="Default" comment="Second commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="RaspControl.iws" />
@@ -164,6 +164,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="WyrnCael" />
         <option value="Jota" />
       </list>
     </option>
@@ -2070,6 +2071,13 @@
       <option name="number" value="Default" />
       <updated>1457621137489</updated>
     </task>
+    <task id="LOCAL-00001" summary="Second commit">
+      <created>1457706570742</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1457706570742</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
