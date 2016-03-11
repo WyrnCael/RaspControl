@@ -29,9 +29,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ips = new ArrayList<String>();
+        ips = new ArrayList<>();
         ListView listview = (ListView)findViewById(R.id.listViewIps);
-        adapter = new ArrayAdapter<String>(this, R.layout.list_ips, ips);
+        adapter = new ArrayAdapter<>(this, R.layout.list_ips, ips);
         listview.setAdapter(adapter);
 
         // Asigno lista de ips
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
                 // Nueva actividad
                 Intent myIntent = new Intent(MainActivity.this, MenuPrincipal.class);
                 myIntent.putExtra("ip", selected);
-                startActivity(myIntent); // oo
+                startActivity(myIntent);
             }
         });
         Button anadir = (Button) findViewById(R.id.anadir);
@@ -84,6 +84,7 @@ public class MainActivity extends Activity {
         while(c.moveToNext()) {
             ips.add(c.getString(0));
         }
+        c.close();
         db.close();
         adapter.notifyDataSetChanged();
     }
