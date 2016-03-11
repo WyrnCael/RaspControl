@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.raspcontrol.wirnlab.raspcontrol.MenuPrincipal"
+    android:columnCount="4"
+    android:rowCount="4">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reiniciar Kodi"
+        android:id="@+id/reiniciarKodi"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apagar"
+        android:id="@+id/apagar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/personalizado"
+        android:layout_below="@+id/apagar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewSalidas"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/personalizado"
+        android:background="#000000"
+        android:padding="10dp"
+        android:layout_margin="10dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/comandoPersonalizado"
+        android:background="#ffffff"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:layout_below="@+id/reiniciarKodi"
+        android:layout_alignBottom="@+id/personalizado"
+        android:layout_alignRight="@+id/reiniciar"
+        android:layout_alignEnd="@+id/reiniciar"
+        android:inputType="text" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reiniciar"
+        android:id="@+id/reiniciar"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/apagar"
+        android:layout_toStartOf="@+id/apagar" />" />
+
+</RelativeLayout>
