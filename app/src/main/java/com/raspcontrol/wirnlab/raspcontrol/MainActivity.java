@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         adapter = new ArrayAdapter<>(this, R.layout.list_ips, ips);
         listview.setAdapter(adapter);
 
-        // Asigno lista de ips
+        // Asigno lista de ipsssssssss
         cargaIpDB();
 
         // Detecto ip pulsada
