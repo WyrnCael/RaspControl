@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelShell;
@@ -30,6 +33,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -68,7 +72,14 @@ public class MenuPrincipal extends ActionBarActivity {
         reiniciarKodi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myConn.sendCommand("sudo systemctl restart mediacenter.service");
+               new AlertDialog.Builder(MenuPrincipal.this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Reiniciar Kodi")
+                            .setMessage("¿Seguro que desea reiniciar Kodi?")
+                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    myConn.sendCommand("systemctl restart mediacenter.service");
+                                }
+                            }).setNegativeButton("No", null).show();
             }
         });
 
@@ -77,7 +88,14 @@ public class MenuPrincipal extends ActionBarActivity {
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myConn.sendCommand("reboot");
+                new AlertDialog.Builder(MenuPrincipal.this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Reinicar")
+                        .setMessage("¿Seguro que desea reiniciar el sistema?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                myConn.sendCommand("reboot");
+                            }
+                        }).setNegativeButton("No", null).show();
             }
         });
 
@@ -86,7 +104,14 @@ public class MenuPrincipal extends ActionBarActivity {
         apagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myConn.sendCommand("sudo shutdown -P");
+                new AlertDialog.Builder(MenuPrincipal.this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Apagar")
+                        .setMessage("¿Seguro que desea apagar el sistema?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                myConn.sendCommand("sudo shutdown -P");
+                            }
+                        }).setNegativeButton("No", null).show();
             }
         });
 
@@ -102,6 +127,20 @@ public class MenuPrincipal extends ActionBarActivity {
             }
         });
 
+        Button kore = (Button) findViewById(R.id.kore);
+
+        kore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launchKore = getPackageManager().getLaunchIntentForPackage("org.xbmc.kore");
+                if(launchKore != null)
+                    startActivity(launchKore);
+                else{
+                    Toast toast = Toast.makeText(MenuPrincipal.this, "¡Kore no está instalado!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+            }
+        });
 
         myConn.execute(this);
 
@@ -118,6 +157,13 @@ public class MenuPrincipal extends ActionBarActivity {
         lineasTerminal.add(linea);
         adapter.notifyDataSetChanged();
         listview.setSelection(adapter.getCount() - 1);
+    }
+
+    private boolean isInstalled(Intent intent) {
+        PackageManager packageManager = getPackageManager();
+        List activities = packageManager.queryIntentActivities(intent,
+                PackageManager.MATCH_DEFAULT_ONLY);
+        return activities.size() > 0;
     }
 
     @Override

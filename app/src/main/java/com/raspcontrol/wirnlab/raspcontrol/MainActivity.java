@@ -33,6 +33,7 @@ public class MainActivity extends Activity {
         ListView listview = (ListView)findViewById(R.id.listViewIps);
         adapter = new ArrayAdapter<>(this, R.layout.list_ips, ips);
         listview.setAdapter(adapter);
+        listview.smoothScrollToPosition(0);
 
         // Asigno lista de ipsssssssss
         cargaIpDB();
@@ -111,7 +112,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Salir")
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Salir")
                 .setMessage("¿Seguro que deseas salir?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override

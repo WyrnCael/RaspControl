@@ -13,9 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Reiniciar Kodi"
         android:id="@+id/reiniciarKodi"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -70,6 +68,16 @@
         android:id="@+id/reiniciar"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/apagar"
-        android:layout_toStartOf="@+id/apagar" />" />
+        android:layout_toStartOf="@+id/apagar" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kore"
+        android:id="@+id/kore"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/reiniciar"
+        android:layout_toStartOf="@+id/reiniciar" />" />
 
 </RelativeLayout>

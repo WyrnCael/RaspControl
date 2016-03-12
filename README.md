@@ -1,14 +1,15 @@
 # RaspControl
-SSH controls for OSMC in Raspberry pi 2
+SSH controls for OSMC in Raspberry pi 2.
 
 # Funciones actuales
 - Añadir ip.
 - Reiniciar mediacenter (Kodi).
+- Lanzar Kodi.
 - Reiniciar sistema.
 - Apagar sistema.
 - Comandos personalizados.
 
 # Funciones por implementar
-- Confirmacion en reincios y apagado.
+
 - Iniciar, reiniciar y parar rtorrent.
-- Diseño
+- ¿Diseño?
