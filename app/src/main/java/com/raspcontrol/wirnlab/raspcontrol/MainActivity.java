@@ -111,7 +111,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Exit")
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Salir")
                 .setMessage("¿Seguro que deseas salir?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override

@@ -1,3 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\transforms\instantRunSlicer\debug\jars\1\5\main_slice.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="474afc78967ce88c540748bf426aa8e141aa0293">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\5\main_slice_4b7168e2771c06fd72801b4111f01dd16acf539a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\transforms\instantRunSlicer\debug\jars\1\5\main_sliceb.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="61f0901b8579a6108b100804cf81cf4f961ba4f9">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\5\main_sliceb_6a312e123f0c4f7fc5566882539bbb0d12a1657d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\transforms\instantRunSlicer\debug\jars\1\1a\dependencies.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="34d29346cf84fb490c5c56507f8a99edbd92dbe5">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\1a\dependencies_125e49a55468bcd4a6d893a33a6fe0c69ccba0c6\classes.dex" />
+    </item>
+
+</items>
