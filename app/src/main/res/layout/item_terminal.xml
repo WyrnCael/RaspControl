@@ -3,5 +3,5 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewFormateadoTerminal"
-        android:textSize="30px" android:paddingTop="10dip" android:paddingBottom="10dip"
-    android:textColor="#ffffff" />
+        android:textSize="30px"
+        android:textColor="#ffffff" />

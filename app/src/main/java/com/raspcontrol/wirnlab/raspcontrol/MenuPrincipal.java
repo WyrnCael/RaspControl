@@ -2,6 +2,7 @@ package com.raspcontrol.wirnlab.raspcontrol;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,8 +12,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,22 +46,23 @@ import static junit.framework.Assert.assertEquals;
 public class MenuPrincipal extends ActionBarActivity {
 
     private TextView prueba;
-    private ListView listview;
+    private ListView listviewSalidas;
     private ArrayAdapter adapter;
     private ArrayList<String> lineasTerminal;
-    Connection myConn;
+    SSHConnection myConn;
     EditText comandoPersonalizado;
+    String prompt;
     String host;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-        listview = (ListView)findViewById(R.id.listViewSalidas);
+        listviewSalidas = (ListView)findViewById(R.id.listViewSalidas);
         lineasTerminal = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this, R.layout.item_terminal, lineasTerminal);
-        listview.setAdapter(adapter);
-
+        listviewSalidas.setAdapter(adapter);
+        prompt = null;
 
 
         // Recibimos los datos
@@ -64,7 +71,7 @@ public class MenuPrincipal extends ActionBarActivity {
         host = ip;
         setTitle(host);
 
-       myConn = new Connection();
+       myConn = new SSHConnection(host);
 
         // Botones
         Button reiniciarKodi = (Button) findViewById(R.id.reiniciarKodi);
@@ -77,7 +84,7 @@ public class MenuPrincipal extends ActionBarActivity {
                             .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    myConn.sendCommand("systemctl restart mediacenter.service");
+                                    myConn.sendCommand("sudo systemctl restart mediacenter.service");
                                 }
                             }).setNegativeButton("No", null).show();
             }
@@ -115,7 +122,7 @@ public class MenuPrincipal extends ActionBarActivity {
             }
         });
 
-        Button personalizado = (Button) findViewById(R.id.personalizado);
+        final Button personalizado = (Button) findViewById(R.id.personalizado);
 
         comandoPersonalizado = (EditText)findViewById(R.id.comandoPersonalizado);
 
@@ -124,6 +131,67 @@ public class MenuPrincipal extends ActionBarActivity {
             public void onClick(View v) {
                 myConn.sendCommand(comandoPersonalizado.getText().toString());
                 comandoPersonalizado.setText("");
+            }
+        });
+
+        // Para arrastar el terminal al desplegar el teclado, ARREGLAR, no deja hacer scroll.
+        final View activityRootView = findViewById(R.id.listViewSalidas);
+        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int heightDiff = activityRootView.getRootView().getHeight() - activityRootView.getHeight();
+                if (heightDiff > 100) { // if more than 100 pixels, its probably a keyboard...
+                    //listviewSalidas.setSelection(adapter.getCount() - 1);
+                }
+            }
+        });
+
+        listviewSalidas.addOnLayoutChangeListener(new View.OnLayoutChangeListener(){
+
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                listviewSalidas.setSelection(adapter.getCount() - 1);
+            }
+        });
+
+        // Para esribir en el terminal lo que se está tecleanado.
+        comandoPersonalizado.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged (Editable s){
+                if(lineasTerminal.size() > 0){
+                    if(prompt == null) prompt  = lineasTerminal.get(lineasTerminal.size()-1);
+                }
+                listviewSalidas.setSelection(adapter.getCount() - 1);
+                if(s.length() > 0) {
+                    setCharConsola(prompt + s.toString());
+                }
+                else{
+                    setCharConsola(prompt);
+                }
+            }
+        });
+
+        // Enter para enviar
+        comandoPersonalizado.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+               // If the event is a key-down event on the "enter" button
+                if ((keyCode == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_UP)) {
+                    // Perform action on key press
+                    personalizado.callOnClick();
+                    return true;
+                }
+                return false;
             }
         });
 
@@ -142,6 +210,54 @@ public class MenuPrincipal extends ActionBarActivity {
             }
         });
 
+        Button iniciarRTorrent = (Button) findViewById(R.id.iniciarRTorrent);
+
+        iniciarRTorrent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MenuPrincipal.this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Iniciar rTorrent")
+                        .setMessage("¿Seguro que desea iniciar rTorrent?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                myConn.sendCommand("sudo systemctl start rtorrent.service");
+                            }
+                        }).setNegativeButton("No", null).show();
+            }
+        });
+
+        Button reiniciarRTorrent = (Button) findViewById(R.id.reiniciarRTorrent);
+
+        reiniciarRTorrent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MenuPrincipal.this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Reinicar rTorrent")
+                        .setMessage("¿Seguro que desea reiniciar rTorrent?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                myConn.sendCommand("sudo systemctl restart rtorrent.service");
+                            }
+                        }).setNegativeButton("No", null).show();
+            }
+        });
+
+        Button pararRTorrent = (Button) findViewById(R.id.pararRTorrent);
+
+        pararRTorrent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MenuPrincipal.this).setIcon(android.R.drawable.ic_menu_info_details).setTitle("Parar rTorrent")
+                        .setMessage("¿Seguro que desea parar rTorrent?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                myConn.sendCommand("sudo systemctl stop rtorrent.service");
+                            }
+                        }).setNegativeButton("No", null).show();
+            }
+        });
+
         myConn.execute(this);
 
     }
@@ -150,13 +266,13 @@ public class MenuPrincipal extends ActionBarActivity {
         if(lineasTerminal.size() > 0) lineasTerminal.remove(lineasTerminal.size()-1);
         lineasTerminal.add(linea);
         adapter.notifyDataSetChanged();
-        listview.setSelection(adapter.getCount() - 1);
+        listviewSalidas.setSelection(adapter.getCount() - 1);
     }
 
     public void setLineConsola(String linea){
         lineasTerminal.add(linea);
         adapter.notifyDataSetChanged();
-        listview.setSelection(adapter.getCount() - 1);
+        listviewSalidas.setSelection(adapter.getCount() - 1);
     }
 
     private boolean isInstalled(Intent intent) {
@@ -172,175 +288,4 @@ public class MenuPrincipal extends ActionBarActivity {
         finish();
     }
 
-     private class Connection extends AsyncTask<MenuPrincipal, String, String> {
-
-         JSch jsch;
-         Channel myChannel;
-         PrintWriter toChannel;
-         Session myLocalSession;
-         MenuPrincipal menu;
-         ProgressDialog progress;
-
-         @Override
-         protected String doInBackground(MenuPrincipal... men) {
-             jsch = new JSch();
-             menu = men[0];
-
-             // Loading...
-             Cargando("Conectando", "Espere mientras conecta...");
-
-             connect();
-             return null;
-         }
-
-         private void connect() {
-             if (host.isEmpty())
-                 return;
-
-             String hostname = host;
-             try {
-                 JSch jsch = new JSch();
-                 String user = "osmc";
-
-                 myLocalSession = jsch.getSession(user, host, 22);
-                 //myLocalSession=jsch.getSession(user, "192.168.1.104", 22);
-
-                 myLocalSession.setPassword("osmc");
-
-                 myLocalSession.setConfig("StrictHostKeyChecking", "no");
-
-                 myLocalSession.connect();   // making a connection with timeout.
-
-                 myChannel = myLocalSession.openChannel("shell");
-
-                 InputStream inStream = myChannel.getInputStream();
-
-                 OutputStream outStream = myChannel.getOutputStream();
-                 toChannel = new PrintWriter(new OutputStreamWriter(outStream), true);
-
-                 myChannel.connect();
-                 readerThread(new InputStreamReader(inStream));
-
-
-                 Thread.sleep(100);
-             } catch (JSchException e) {
-                 String message = e.getMessage();
-                 if (message.contains("UnknownHostException")) {
-                     //menu.setTextConsola(">>>>> Unknow Host. Please verify hostname.");
-                 } else if (message.contains("socket is not established")) {
-                     //menu.setTextConsola(">>>>> Can't connect to the server for the moment.");
-                 } else if (message.contains("Auth fail")) {
-                 }
-                 //menu.setTextConsola(">>>>> Please verify login and password");
-                 else if (message.contains("Connection refused")) {
-                 }
-                 //menu.setTextConsola(">>>>> The server refused the connection");
-                 else
-                     System.out.println("*******Unknown ERROR********");
-
-                 System.out.println(e.getMessage());
-                 System.out.println(e + "****connect()");
-             } catch (IOException e) {
-                 System.out.println(e);
-                 //menu.setTextConsola(">>>>> Error when reading data streams from the server");
-             } catch (Exception e) {
-                 e.printStackTrace();
-             }
-             FinDeCarga();
-         }
-
-         public void sendCommand(final String command) {
-             Cargando("Enviando comando", "Por favor espere...");
-             if (myLocalSession != null && myLocalSession.isConnected()) {
-                 try {
-                     toChannel.println(command);
-                 } catch (Exception e) {
-                     e.printStackTrace();
-                 }
-             }
-             FinDeCarga();
-         }
-
-         void readerThread(final InputStreamReader tout) {
-             Thread read2 = new Thread() {
-                 @Override
-                 public void run() {
-                     StringBuilder line = new StringBuilder();
-                     char toAppend = ' ';
-                     try {
-                         while (true) {
-                             try {
-                                 while (tout.ready()) {
-                                     toAppend = (char) tout.read();
-                                     if (toAppend == '\n') {
-                                         System.out.println(line.toString());
-                                         OnNuevaLinea(line.toString());
-                                         line.setLength(0);
-                                     } else {
-                                         line.append(toAppend);
-                                         OnNuevoChar(line.toString());
-                                     }
-                                 }
-                             } catch (Exception e) {
-                                 e.printStackTrace();
-                                 System.out.println("\n\n\n************errorrrrrrr reading character**********\n\n\n");
-                             }
-                         }
-                     } catch (Exception ex) {
-                         System.out.println(ex);
-                         try {
-                             tout.close();
-                         } catch (Exception e) {
-                         }
-                     }
-                 }
-             };
-             read2.start();
-         }
-
-         public void OnNuevaLinea(final String data) {
-             runOnUiThread(new Runnable() {
-                 public void run() {
-                     // use data here
-                     menu.setLineConsola(data);
-                 }
-             });
-         }
-
-         public void OnNuevoChar(final String data) {
-             runOnUiThread(new Runnable() {
-                 public void run() {
-                     // use data here
-                     menu.setCharConsola(data);
-                 }
-             });
-         }
-
-         public void Cargando(final String titula, String mensaje) {
-             runOnUiThread(new Runnable() {
-                 public void run() {
-                     // use data here
-                     progress = new ProgressDialog(MenuPrincipal.this);
-                     progress.setTitle("Conectando");
-                     progress.setMessage("Espere mientra conecta...");
-                     progress.show();
-                 }
-             });
-         }
-
-         public void FinDeCarga() {
-             runOnUiThread(new Runnable() {
-                 public void run() {
-                     // use data here
-                     progress.dismiss();
-                     ;
-                 }
-             });
-         }
-
-         private void exit(){
-             myChannel.disconnect();
-             myLocalSession.disconnect();
-         }
-     }
 }

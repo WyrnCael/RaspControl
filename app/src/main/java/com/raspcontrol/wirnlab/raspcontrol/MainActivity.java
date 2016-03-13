@@ -2,6 +2,7 @@ package com.raspcontrol.wirnlab.raspcontrol;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,7 +37,7 @@ public class MainActivity extends Activity {
         listview.setAdapter(adapter);
         listview.smoothScrollToPosition(0);
 
-        // Asigno lista de ipsssssssss
+        // Asigno lista de ips
         cargaIpDB();
 
         // Detecto ip pulsada
@@ -54,6 +56,15 @@ public class MainActivity extends Activity {
         Button anadir = (Button) findViewById(R.id.anadir);
 
         textAnadir = (EditText)findViewById(R.id.nuevaIp);
+
+        textAnadir.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    textAnadir.setText("");
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(textAnadir, InputMethodManager.SHOW_IMPLICIT);
+                }
+        });
 
         textAnadir.setOnClickListener(new View.OnClickListener() {
             @Override

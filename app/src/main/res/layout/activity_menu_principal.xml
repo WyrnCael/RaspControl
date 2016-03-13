@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context="com.raspcontrol.wirnlab.raspcontrol.MenuPrincipal"
     android:columnCount="4"
-    android:rowCount="4">
+    android:rowCount="4"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:background="#f7f3a0">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/listViewSalidas"
+        android:layout_alignRight="@+id/apagar"
+        android:layout_alignEnd="@+id/apagar"
+        android:background="#ffffff"
+        android:layout_below="@+id/rtorrentcontrols" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/rtorrentcontrols"
+        android:layout_alignRight="@+id/apagar"
+        android:layout_alignEnd="@+id/apagar"
+        android:background="#f57070" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -13,52 +41,24 @@
         android:layout_height="wrap_content"
         android:text="Reiniciar Kodi"
         android:id="@+id/reiniciarKodi"
-        android:layout_alignParentTop="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apagar"
-        android:id="@+id/apagar"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enviar"
-        android:id="@+id/personalizado"
-        android:layout_below="@+id/apagar"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewSalidas"
+        android:layout_row="0"
         android:layout_column="0"
-        android:layout_row="2"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/personalizado"
-        android:background="#000000"
-        android:padding="10dp"
-        android:layout_margin="10dp" />
+        android:paddingLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/comandoPersonalizado"
-        android:background="#ffffff"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:layout_below="@+id/reiniciarKodi"
-        android:layout_alignBottom="@+id/personalizado"
-        android:layout_alignRight="@+id/reiniciar"
-        android:layout_alignEnd="@+id/reiniciar"
-        android:inputType="text" />
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kore"
+        android:id="@+id/kore"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/iniciarRTorrent"
+        android:layout_alignStart="@+id/iniciarRTorrent" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -66,6 +66,8 @@
         android:layout_height="wrap_content"
         android:text="Reiniciar"
         android:id="@+id/reiniciar"
+        android:layout_row="0"
+        android:layout_column="2"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/apagar"
         android:layout_toStartOf="@+id/apagar" />
@@ -74,10 +76,110 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kore"
-        android:id="@+id/kore"
+        android:text="Apagar"
+        android:id="@+id/apagar"
+        android:layout_row="0"
+        android:layout_column="3"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/reiniciar"
-        android:layout_toStartOf="@+id/reiniciar" />" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="134dp"
+        android:layout_height="match_parent"
+        android:text="     rTorrent controls:"
+        android:id="@+id/rtorrentcontrols"
+        android:layout_gravity="top"
+        android:paddingTop="15dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_below="@+id/reiniciarKodi"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/iniciarRTorrent" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar"
+        android:id="@+id/iniciarRTorrent"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_below="@+id/kore"
+        android:layout_toLeftOf="@+id/reiniciarRTorrent"
+        android:layout_toStartOf="@+id/reiniciarRTorrent" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reiniciar"
+        android:id="@+id/reiniciarRTorrent"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:layout_below="@+id/reiniciar"
+        android:layout_toLeftOf="@+id/pararRTorrent"
+        android:layout_toStartOf="@+id/pararRTorrent" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parar"
+        android:id="@+id/pararRTorrent"
+        android:layout_row="1"
+        android:layout_column="3"
+        android:layout_below="@+id/apagar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/comandoPersonalizado"
+        android:background="#ffffff"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:inputType="text"
+        android:padding="10dp"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_below="@+id/rtorrentcontrols"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/personalizado"
+        android:layout_alignBottom="@+id/personalizado"
+        android:layout_toLeftOf="@+id/personalizado" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/personalizado"
+        android:layout_row="2"
+        android:layout_column="3"
+        android:layout_below="@+id/pararRTorrent"
+        android:layout_toRightOf="@+id/reiniciar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewSalidas"
+        android:background="#000000"
+        android:paddingTop="30dp"
+        android:padding="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_below="@+id/comandoPersonalizado" />
 
 </RelativeLayout>

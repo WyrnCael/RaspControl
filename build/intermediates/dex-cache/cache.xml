@@ -1,3 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\libs\jsch-0.1.53.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="28b183f2db44de2ca82f324ea996593dc6931b12">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\pre-dexed\debug\jsch-0.1.53_11b021453c0798e0828736283525e99dbea3dcb7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-21.0.3_6fdc0e0aedc1c9913e5deb2b3edadb04c9855251.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3_2dcb4a2c19b972b327f42a49a0ce8ff3d123f8fe.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-21.0.3_800b33b8a93bc2df266f5a2522662a0f9cdace53.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jota\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3_fac841630dff53bf4d11628eb07c766ac228a2ef.jar" />
+    </item>
+
+</items>
