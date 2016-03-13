@@ -5,11 +5,10 @@ SSH controls for OSMC in Raspberry pi 2.
 - Añadir ip.
 - Reiniciar mediacenter (Kodi).
 - Lanzar Kodi.
-- Reiniciar sistema.
-- Apagar sistema.
+- Reiniciar y apagar sistema.
+- Iniciar, reiniciar y parar rtorrent.
 - Comandos personalizados.
 
 # Funciones por implementar
 
-- Iniciar, reiniciar y parar rtorrent.
 - ¿Diseño?
