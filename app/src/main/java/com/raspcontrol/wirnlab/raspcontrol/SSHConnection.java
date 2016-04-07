@@ -25,7 +25,6 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
     private PrintWriter toChannel;
     private Session myLocalSession;
     private MenuPrincipal menu;
-    private ProgressDialog progress;
     private String host;
 
     public SSHConnection(String host){
@@ -38,7 +37,7 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
         menu = men[0];
 
         // Loading...
-        Cargando("Conectando", "Espere mientras conecta...");
+        menu.Cargando("Conectando", "Espere mientras conecta...");
 
         connect();
         return null;
@@ -72,7 +71,6 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
             myChannel.connect();
             readerThread(new InputStreamReader(inStream));
 
-
             Thread.sleep(100);
         } catch (JSchException e) {
             String message = e.getMessage();
@@ -97,11 +95,14 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        FinDeCarga();
+
+        menu.FinDeCarga();
+
+        compruebaEstRTorrent();
     }
 
     public void sendCommand(final String command) {
-        Cargando("Enviando comando", "Por favor espere...");
+        //menu.Cargando("Enviando comando", "Por favor espere...");
         if (myLocalSession != null && myLocalSession.isConnected()) {
             try {
                 toChannel.println(command);
@@ -109,7 +110,7 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
                 e.printStackTrace();
             }
         }
-        FinDeCarga();
+        //menu.FinDeCarga();
     }
 
     void readerThread(final InputStreamReader tout) {
@@ -167,30 +168,22 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
         });
     }
 
-    public void Cargando(final String titula, String mensaje) {
-        menu.runOnUiThread(new Runnable() {
-            public void run() {
-                // use data here
-                progress = new ProgressDialog(menu);
-                progress.setTitle("Conectando");
-                progress.setMessage("Espere mientra conecta...");
-                progress.show();
-            }
-        });
-    }
-
-    public void FinDeCarga() {
-        menu.runOnUiThread(new Runnable() {
-            public void run() {
-                // use data here
-                progress.dismiss();
-                ;
-            }
-        });
-    }
-
     public void exit(){
         myChannel.disconnect();
         myLocalSession.disconnect();
+    }
+
+    public void compruebaEstRTorrent(){
+        // Para comprobar si rTorrent está activo
+        menu.Cargando("Comprobando estado de rTorrent", "Por favor espere");
+        try {
+            Thread.sleep(1000);
+            sendCommand("systemctl list-units | grep rtorrent");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        menu.compruebaRTorrentActivo();
+        menu.FinDeCarga();
     }
 }

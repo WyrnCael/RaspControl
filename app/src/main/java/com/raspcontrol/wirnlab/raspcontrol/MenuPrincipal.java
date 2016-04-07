@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
@@ -23,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +52,9 @@ public class MenuPrincipal extends ActionBarActivity {
     private ListView listviewSalidas;
     private ArrayAdapter adapter;
     private ArrayList<String> lineasTerminal;
-    SSHConnection myConn;
+    private RelativeLayout layoutPrincipal;
+    private SSHConnection myConn;
+    private ProgressDialog progress;
     EditText comandoPersonalizado;
     String prompt;
     String host;
@@ -62,6 +67,7 @@ public class MenuPrincipal extends ActionBarActivity {
         lineasTerminal = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this, R.layout.item_terminal, lineasTerminal);
         listviewSalidas.setAdapter(adapter);
+        layoutPrincipal = (RelativeLayout) findViewById(R.id.layoutMenuPrincipal);
         prompt = null;
 
 
@@ -71,7 +77,8 @@ public class MenuPrincipal extends ActionBarActivity {
         host = ip;
         setTitle(host);
 
-       myConn = new SSHConnection(host);
+        myConn = new SSHConnection(host);
+        //compruebaRTorrentActivo();
 
         // Botones
         Button reiniciarKodi = (Button) findViewById(R.id.reiniciarKodi);
@@ -221,6 +228,7 @@ public class MenuPrincipal extends ActionBarActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 myConn.sendCommand("sudo systemctl start rtorrent.service");
+                                myConn.compruebaEstRTorrent();
                             }
                         }).setNegativeButton("No", null).show();
             }
@@ -237,6 +245,7 @@ public class MenuPrincipal extends ActionBarActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 myConn.sendCommand("sudo systemctl restart rtorrent.service");
+                                myConn.compruebaEstRTorrent();
                             }
                         }).setNegativeButton("No", null).show();
             }
@@ -253,6 +262,7 @@ public class MenuPrincipal extends ActionBarActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 myConn.sendCommand("sudo systemctl stop rtorrent.service");
+                                myConn.compruebaEstRTorrent();
                             }
                         }).setNegativeButton("No", null).show();
             }
@@ -280,6 +290,40 @@ public class MenuPrincipal extends ActionBarActivity {
         List activities = packageManager.queryIntentActivities(intent,
                 PackageManager.MATCH_DEFAULT_ONLY);
         return activities.size() > 0;
+    }
+
+    public void compruebaRTorrentActivo(){
+        this.runOnUiThread(new Runnable() {
+            public void run() {
+                //myConn.estadoRTorrent();
+                String respuesta = lineasTerminal.get(lineasTerminal.size() - 2);
+                if(respuesta.indexOf("active") > -1){
+                    layoutPrincipal.setBackgroundColor(Color.parseColor("#89e599"));
+                    lineasTerminal.remove(lineasTerminal.size() - 2);
+                }
+                else{
+                    layoutPrincipal.setBackgroundColor(Color.parseColor("#f38989"));
+                }
+                // Para borrar la consulta del rTorrent
+                lineasTerminal.remove(lineasTerminal.size() - 2);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    public void Cargando(final String titulo, final String mensaje) {
+        this.runOnUiThread(new Runnable() {
+            public void run() {
+                progress = new ProgressDialog(MenuPrincipal.this);
+                progress.setTitle(titulo);
+                progress.setMessage(mensaje);
+                progress.show();
+            }
+        });
+    }
+
+    public void FinDeCarga() {
+        progress.dismiss();
     }
 
     @Override

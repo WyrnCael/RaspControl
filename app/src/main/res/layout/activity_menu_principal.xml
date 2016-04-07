@@ -9,7 +9,8 @@
     android:rowCount="4"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    android:background="#f7f3a0">
+    android:id="@+id/layoutMenuPrincipal"
+    android:background="#f3dc89">
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,7 +34,7 @@
         android:layout_above="@+id/rtorrentcontrols"
         android:layout_alignRight="@+id/apagar"
         android:layout_alignEnd="@+id/apagar"
-        android:background="#f57070" />
+        android:background="#65bef9" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
