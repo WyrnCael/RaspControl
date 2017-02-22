@@ -1,6 +1,6 @@
 # RaspControl
 
-Android application with SSH controls for OSMC in Raspberry Pi.
+Android application with SSH controls for [OSMC](https://osmc.tv/) in [Raspberry Pi](https://www.raspberrypi.org/).
 
 # Funciones actuales
 - Añadir ip.
