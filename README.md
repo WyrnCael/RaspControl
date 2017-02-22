@@ -5,7 +5,7 @@ Android application with SSH controls for [OSMC](https://osmc.tv/) in [Raspberry
 # Funciones actuales
 - Añadir ip.
 - Reiniciar mediacenter (Kodi).
-- Lanzar Kodi.
+- Abrir [Kore](https://play.google.com/store/apps/details?id=org.xbmc.kore&hl=es).
 - Reiniciar y apagar sistema.
 - Iniciar, reiniciar y parar rtorrent.
 - Comandos personalizados.
