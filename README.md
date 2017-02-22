@@ -1,5 +1,6 @@
 # RaspControl
-SSH controls for OSMC in Raspberry pi 2.
+
+Android application with SSH controls for OSMC in Raspberry Pi.
 
 # Funciones actuales
 - Añadir ip.
@@ -9,6 +10,6 @@ SSH controls for OSMC in Raspberry pi 2.
 - Iniciar, reiniciar y parar rtorrent.
 - Comandos personalizados.
 
-# Funciones por implementar
+# Funciones por implementar/mejorar
 
-- ¿Diseño?
+[ ] Diseño
