@@ -12,4 +12,4 @@ Android application with SSH controls for [OSMC](https://osmc.tv/) in [Raspberry
 
 # Funciones por implementar/mejorar
 
-[ ] Diseño
+ - [ ] Diseño
