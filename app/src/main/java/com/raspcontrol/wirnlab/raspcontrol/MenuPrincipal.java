@@ -73,11 +73,13 @@ public class MenuPrincipal extends ActionBarActivity {
 
         // Recibimos los datos
         Intent myIntent = getIntent(); // gets the previously created intent
-        String ip = myIntent.getStringExtra("ip");
-        host = ip;
-        setTitle(host);
+        String nombreServer = myIntent.getStringExtra("nombre");
+        DAOSql dao = new DAOSql();
+        Log.v("Nombre server", nombreServer);
+        ServerInfo server = dao.getServer(this, nombreServer);
+        setTitle(server.getNombre() + "(" + server.getHost() + ")");
 
-        myConn = new SSHConnection(host);
+        myConn = new SSHConnection(server);
         //compruebaRTorrentActivo();
 
         // Botones

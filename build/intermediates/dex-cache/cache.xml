@@ -1,3 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-21.0.3_3cfb5f64a44f411c95126dcf0d677da4d66779af\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-21.0.3_a02ff911904d14299c54c1f2a128f76461bcd79c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-21.0.3_10ce97ab807904779cf347b88b4aef1f3f1c9da4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-21.0.3_fac841630dff53bf4d11628eb07c766ac228a2ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\libs\jsch-0.1.53.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="28b183f2db44de2ca82f324ea996593dc6931b12">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\2\jsch-0.1.53_dd3eac5fca4a4b90ff884a1ca3af9a706cdf09a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c8fe39a43e30599f1006b0e4a41ec18242bbcb55">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_d4326f625649248d42a2af9e05938b23fe3166fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4d46c7759deb0aca7ea35f70c7a541581c8f4b78">
+        <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_4e6779b437168576ed4cb017a096473dc5268255\classes.dex" />
+    </item>
+
+</items>
