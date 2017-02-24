@@ -1,6 +1,5 @@
 package com.raspcontrol.wirnlab.raspcontrol;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import com.jcraft.jsch.Channel;

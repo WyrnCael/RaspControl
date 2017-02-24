@@ -1,6 +1,11 @@
 package com.raspcontrol.wirnlab.raspcontrol;
 
-import com.jcraft.jsch.*;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;

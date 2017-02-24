@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-
 /**
  * Created by Jota on 22/02/2017.
  */
@@ -23,6 +21,7 @@ public class NewServer extends Activity {
         dao = new DAOSql();
 
         Button anadir = (Button) findViewById(R.id.button_add);
+        Button cancelar = (Button) findViewById(R.id.button_cancel);
         final EditText nombre = (EditText)findViewById(R.id.name_text);
         final EditText ip = (EditText)findViewById(R.id.ip_text);
         final EditText usuario = (EditText)findViewById(R.id.user_text);
@@ -36,6 +35,16 @@ public class NewServer extends Activity {
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("Añadido", true);
                 setResult(Activity.RESULT_OK, resultIntent);
+                finish();
+            }
+        });
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("Cancelar", true);
+                setResult(Activity.RESULT_CANCELED, resultIntent);
                 finish();
             }
         });
