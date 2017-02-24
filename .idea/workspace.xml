@@ -19,16 +19,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9ef83ab3-fa24-4667-8bf6-f7c588108beb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/DAOSql.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/DAOSql.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/MenuPrincipal.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/MenuPrincipal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/NewServer.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/NewServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/SSHConnection.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/SSHConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/SSHManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/raspcontrol/wirnlab/raspcontrol/SSHManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_server.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_server.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/test/java/com/raspcontrol/wirnlab/raspcontrol/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/app/src/test/java/com/raspcontrol/wirnlab/raspcontrol/ExampleUnitTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="RaspControl.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -209,6 +199,9 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$" source="CambiandoHosts" target-remote="origin" target-branch="master" />
+    </push-targets>
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -2488,7 +2481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487961589655</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Volver al cancelar en añadir servidor.">
+      <created>1487962442150</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1487962442150</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2520,11 +2520,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889125" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.48294243" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32739422" sideWeight="0.48081023" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.4914712" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32739422" sideWeight="0.52132195" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32739422" sideWeight="0.5191898" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946696" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2558,7 +2558,8 @@
     <MESSAGE value="Version 1.0.2&#10;&#10;Cambios en README" />
     <MESSAGE value="Nueva forma de añadir servidores" />
     <MESSAGE value="Usuario y contraseña personalizable al añadir servidor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Usuario y contraseña personalizable al añadir servidor." />
+    <MESSAGE value="Volver al cancelar en añadir servidor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Volver al cancelar en añadir servidor." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
