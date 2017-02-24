@@ -10,6 +10,14 @@ Android application with SSH controls for [OSMC](https://osmc.tv/) in [Raspberry
 - Iniciar, reiniciar y parar rtorrent.
 - Comandos personalizados.
 
+## Screenshots
+
+![alt tag](http://i.imgur.com/E7CizIc.png)
+
+![alt tag](http://i.imgur.com/oxQryKh.png)
+
+![alt tag](http://i.imgur.com/UwnagvI.png)
+
 ## Funciones por implementar/mejorar
 
  - [ ] Diseño
