@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuPrincipal"></activity>
+        <activity android:name=".NewServer"></activity>
     </application>
 
 </manifest>

@@ -25,10 +25,10 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
     private PrintWriter toChannel;
     private Session myLocalSession;
     private MenuPrincipal menu;
-    private String host;
+    private ServerInfo server;
 
-    public SSHConnection(String host){
-        this.host = host;
+    public SSHConnection(ServerInfo server){
+        this.server = server;
     }
 
     @Override
@@ -44,18 +44,14 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
     }
 
     private void connect() {
-        if (host.isEmpty())
-            return;
-
-        String hostname = host;
+        String hostname = server.getHost();
         try {
             JSch jsch = new JSch();
-            String user = "osmc";
 
-            myLocalSession = jsch.getSession(user, host, 22);
+            myLocalSession = jsch.getSession(server.getUser(), server.getHost(), 22);
             //myLocalSession=jsch.getSession(user, "192.168.1.104", 22);
 
-            myLocalSession.setPassword("osmc");
+            myLocalSession.setPassword(server.getPass());
 
             myLocalSession.setConfig("StrictHostKeyChecking", "no");
 

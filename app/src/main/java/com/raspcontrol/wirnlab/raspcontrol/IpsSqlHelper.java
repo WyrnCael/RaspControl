@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class IpsSqlHelper extends SQLiteOpenHelper {
 
     //Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreate = "CREATE TABLE IPS (codigo INTEGER, ip TEXT)";
+    String sqlCreate = "CREATE TABLE Servers (_id INT PRIMARY KEY, nombre TEXT UNIQUE, ip TEXT, usuario TEXT, password TEXT)";
 
     public IpsSqlHelper(Context contexto, String nombre,
                                 CursorFactory factory, int version) {
@@ -29,7 +29,7 @@ public class IpsSqlHelper extends SQLiteOpenHelper {
         //      a la nueva, por lo que este método debería ser más elaborado.
 
         //Se elimina la versión anterior de la tabla
-        db.execSQL("DROP TABLE IF EXISTS IPS");
+        db.execSQL("DROP TABLE IF EXISTS Servers");
 
         //Se crea la nueva versión de la tabla
         db.execSQL(sqlCreate);
