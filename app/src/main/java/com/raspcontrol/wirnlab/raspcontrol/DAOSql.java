@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -22,11 +21,9 @@ public class DAOSql {
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
         //Si hemos abierto correctamente la base de datos
-        Log.d("Server", server.getNombre() + server.getHost() + server.getUser() + server.getPass());
         if(db != null)
         {
-            Log.d("Server", server.getNombre() + server.getHost() + server.getUser() + server.getPass());
-            //Insertamos 5 usuarios de ejemplo
+            //Insertamos el host
             db.execSQL("INSERT INTO Servers (nombre, ip, usuario, password ) " +
                     "VALUES ('" + server.getNombre() + "', '" + server.getHost() + "', '" + server.getUser() +
                     "', '" + server.getPass() +"')");
@@ -64,7 +61,7 @@ public class DAOSql {
 
         SQLiteDatabase db = usdbh.getReadableDatabase();
 
-        String query = "SELECT * FROM Servers WHERE 'nombre' = '" + name + "'";
+        String query = "SELECT * FROM Servers WHERE nombre = '" + name + "'";
 
         Cursor c = db.rawQuery(query, null);
         while(c.moveToNext()) {
@@ -73,6 +70,7 @@ public class DAOSql {
             server.setUser(c.getString(c.getColumnIndex("usuario")));
             server.setPass(c.getString(c.getColumnIndex("password")));
         }
+
         c.close();
         db.close();
 

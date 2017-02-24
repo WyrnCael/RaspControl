@@ -65,6 +65,8 @@ public class MainActivity extends Activity {
             case (1) : {
                 if (resultCode == Activity.RESULT_OK) {
                     names = dao.getNames(this);
+                    adapter.clear();
+                    adapter.addAll(names);
                     adapter.notifyDataSetChanged();
                 }
                 break;

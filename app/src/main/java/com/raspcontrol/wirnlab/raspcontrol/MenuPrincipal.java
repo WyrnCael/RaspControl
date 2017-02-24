@@ -57,11 +57,11 @@ public class MenuPrincipal extends ActionBarActivity {
     private ProgressDialog progress;
     EditText comandoPersonalizado;
     String prompt;
-    String host;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_menu_principal);
         listviewSalidas = (ListView)findViewById(R.id.listViewSalidas);
         lineasTerminal = new ArrayList<String>();
@@ -75,7 +75,6 @@ public class MenuPrincipal extends ActionBarActivity {
         Intent myIntent = getIntent(); // gets the previously created intent
         String nombreServer = myIntent.getStringExtra("nombre");
         DAOSql dao = new DAOSql();
-        Log.v("Nombre server", nombreServer);
         ServerInfo server = dao.getServer(this, nombreServer);
         setTitle(server.getNombre() + "(" + server.getHost() + ")");
 

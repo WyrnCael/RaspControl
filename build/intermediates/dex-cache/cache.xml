@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="c8fe39a43e30599f1006b0e4a41ec18242bbcb55">
+        sha1="d698997d3736fb5ddc61450522df74c6e10369e6">
         <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_d4326f625649248d42a2af9e05938b23fe3166fa\classes.dex" />
     </item>
     <item
@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="4d46c7759deb0aca7ea35f70c7a541581c8f4b78">
+        sha1="a2e1af0adabfa7f693f3f33e5fa1e6cefa1afa76">
         <dex dex="C:\Users\Jota\AndroidStudioProjects\RaspControl\RaspControl\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_4e6779b437168576ed4cb017a096473dc5268255\classes.dex" />
     </item>
 

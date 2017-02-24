@@ -44,9 +44,6 @@ public class SSHConnection extends AsyncTask<MenuPrincipal, String, String> {
     }
 
     private void connect() {
-        if (server.getHost().isEmpty())
-            return;
-
         String hostname = server.getHost();
         try {
             JSch jsch = new JSch();

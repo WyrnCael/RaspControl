@@ -1,7 +1,5 @@
 package com.raspcontrol.wirnlab.raspcontrol;
 
-import android.util.Log;
-
 /**
  * Created by Jota on 23/02/2017.
  */
@@ -19,7 +17,6 @@ public class ServerInfo {
         this.host = host;
         this.user = user;
         this.pass = pass;
-        Log.v("ServerInfo", this.nombre + this.user + this.user + this.pass);
     }
 
     public String getHost() {
