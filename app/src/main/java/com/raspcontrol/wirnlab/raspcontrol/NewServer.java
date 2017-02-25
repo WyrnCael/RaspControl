@@ -3,6 +3,7 @@ package com.raspcontrol.wirnlab.raspcontrol;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,13 +12,14 @@ import android.widget.EditText;
  * Created by Jota on 22/02/2017.
  */
 
-public class NewServer extends Activity {
+public class NewServer extends ActionBarActivity {
     private DAOSql dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_server);
+        setTitle("Añadir Servidor");
         dao = new DAOSql();
 
         Button anadir = (Button) findViewById(R.id.button_add);

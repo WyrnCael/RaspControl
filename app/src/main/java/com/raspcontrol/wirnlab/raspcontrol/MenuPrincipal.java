@@ -2,6 +2,7 @@ package com.raspcontrol.wirnlab.raspcontrol;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,6 +14,9 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +30,6 @@ import java.util.List;
 
 public class MenuPrincipal extends ActionBarActivity {
 
-    private TextView prueba;
     private ListView listviewSalidas;
     private ArrayAdapter adapter;
     private ArrayList<String> lineasTerminal;
@@ -54,7 +57,7 @@ public class MenuPrincipal extends ActionBarActivity {
         String nombreServer = myIntent.getStringExtra("nombre");
         DAOSql dao = new DAOSql();
         ServerInfo server = dao.getServer(this, nombreServer);
-        setTitle(server.getNombre() + "(" + server.getHost() + ")");
+        setTitle(server.getNombre() + " (" + server.getHost() + ")");
 
         myConn = new SSHConnection(server);
         //compruebaRTorrentActivo();
