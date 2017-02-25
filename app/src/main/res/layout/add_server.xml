@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:layout_margin="10dp"
         android:ems="10"
         android:id="@+id/name_text" />
 
@@ -34,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:layout_margin="10dp"
         android:ems="10"
         android:id="@+id/ip_text" />
 
@@ -48,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:layout_margin="10dp"
         android:ems="10"
         android:id="@+id/user_text" />
 
@@ -62,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:layout_margin="10dp"
         android:ems="10"
         android:id="@+id/pass_text" />
 
@@ -70,18 +74,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_add"
+        android:layout_margin="10dp"
         android:background="@color/abc_search_url_text_normal" />
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="17dp">
-
-    </GridLayout>
 
     <Button
         android:text="Cancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_cancel"
+        android:layout_margin="10dp"
         android:background="@android:color/holo_red_light" />
 </LinearLayout>
